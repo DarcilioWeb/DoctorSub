@@ -57,29 +57,6 @@ common_subdomains = [
     'site3', 'stats3', 'billing3', 'help3', 'staff3', 'dev4', 'email3', 'security3', 'service11', 'web4'
 ]
 
-
-def styled_print(text, color=Fore.GREEN, delay=0.01, bold=False):
-    style = color
-    if bold:
-        style += Style.BRIGHT
-
-    sys.stdout.write(style)
-    for char in text:
-        sys.stdout.write(char)
-        sys.stdout.flush()
-        time.sleep(delay)
-    print(Style.RESET_ALL)
-
-def loading_animation():
-    animation_frames = ['|', '/', '-', '\\']
-    for _ in range(10):
-        for frame in animation_frames:
-            sys.stdout.write(f"\r{Fore.YELLOW}Carregando enumeração {frame}")
-            sys.stdout.flush()
-            time.sleep(0.2)
-    sys.stdout.write(f"\r{Fore.GREEN}Carregamento Completo! \n")
-    print(Style.RESET_ALL)
-
 def check_subdomain(domain, subdomain):
     try:
         full_domain = f"{subdomain}.{domain}"
