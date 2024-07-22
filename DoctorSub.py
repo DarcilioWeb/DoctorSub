@@ -2,7 +2,8 @@
 import socket
 import sys
 import time
-from colorama import Fore, Style, init, Back
+from colorama import Fore, Style, init
+import Dutils
 
 init(autoreset=True)
 
@@ -81,6 +82,8 @@ common_subdomains = ['www', 'mail', 'ftp', 'admin', 'blog', 'support', 'help', '
     'public', 'tracking', 'store', 'feedback', 'knowledge', 'service', 'update', 'client', 
     'forum', 'tracking', 'store', 'public', 'feedback',]
 
+
+
 def check_subdomain(domain, subdomain):
     try:
         full_domain = f"{subdomain}.{domain}"
@@ -93,8 +96,8 @@ def enumerate_subdomains(domain):
     active_subdomains = []
     start_time = time.time()
 
-    styled_print(f'\nIniciando a enumeração de subdomínios para {domain}...', Fore.LIGHTYELLOW_EX, bold=True)
-    loading_animation()
+    Dutils.styled_print(f'\nIniciando a enumeração de subdomínios para {domain}...', Fore.LIGHTYELLOW_EX, bold=True)
+    Dutils.loading_animation()
 
     for subdomain in common_subdomains:
         ip = check_subdomain(domain, subdomain)
@@ -104,34 +107,15 @@ def enumerate_subdomains(domain):
     end_time = time.time()
     duration = end_time - start_time
 
-    styled_print(f'\nSubdomínios ativos para {domain}:', Fore.LIGHTGREEN_EX, bold=True)
+    Dutils.styled_print(f'\nSubdomínios ativos para {domain}:', Fore.LIGHTGREEN_EX, bold=True)
     for index, (subdomain, ip) in enumerate(active_subdomains, start=1):
-        styled_print(f'{index}. {subdomain}.{domain} - {ip}', Fore.LIGHTGREEN_EX, delay=0.02, bold=True)
+        Dutils.styled_print(f'{index}. {subdomain}.{domain} - {ip}', Fore.LIGHTGREEN_EX, delay=0.02, bold=True)
 
-    styled_print(f'\nDuração da enumeração: {duration:.2f} segundos', Fore.CYAN, bold=True)
-
-def print_credits():
-    styled_print('\nFerramenta desenvolvida por SrJare337', Fore.RED, bold=True)
-    styled_print('Versão: V1.1', Fore.RED, bold=True)
-
-def print_intro():
-    border_length = 60
-    title = "🔥HACKER SUBDOMAIN ENUMERATOR🔥"
-    credits = "Ferramenta desenvolvida por SrJare337"
-    padding_title = (border_length - len(title) - 4) // 2
-    padding_credits = (border_length - len(credits) - 4) // 2
-    border = "=" * border_length
-    middle_line_title = f" {' ' * padding_title}{title} {' ' * padding_title} "
-    middle_line_credits = f" {' ' * padding_credits}{credits} {' ' * padding_credits} "
-
-    print(Back.BLACK + Fore.GREEN + border)
-    styled_print(middle_line_title, Fore.LIGHTCYAN_EX, bold=True)
-    styled_print(middle_line_credits, Fore.LIGHTCYAN_EX, bold=True)
-    print(Fore.GREEN + border)
+    Dutils.styled_print(f'\nDuração da enumeração: {duration:.2f} segundos', Fore.CYAN, bold=True)
 
 if __name__ == "__main__":
-    print_intro()
+    Dutils.print_intro()
     domain = input(Fore.CYAN + "Digite o domínio para (exemplo.com): " + Style.RESET_ALL).strip()
 
     enumerate_subdomains(domain)
-    print_credits()
+    Dutils.print_credits()
