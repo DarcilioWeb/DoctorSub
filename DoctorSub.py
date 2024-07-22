@@ -6,56 +6,80 @@ from colorama import Fore, Style, init, Back
 
 init(autoreset=True)
 
-common_subdomains = [
-    'www', 'mail', 'ftp', 'ns1', 'ns2', 'test', 'admin', 'webmail', 'blog', 'shop',
-    'dev', 'api', 'm', 'docs', 'support', 'customer', 'forum', 'news', 'static', 'cdn',
-    'store', 'secure', 'backup', 'app', 'int', 'data', 'management', 'beta', 'portal', 'my',
-    'cloud', 'server', 'wiki', 'mx', 'vpn', 'service', 'status', 'tools', 'app1', 'media',
-    'image', 'files', 'downloads', 'local', 'auth', 'admin1', 'office', 'sms', 'info',
-    'mail1', 'archive', 'projects', 'events', 'survey', 'forms', 'shop1', 'search', 'resources',
-    'monitor', 'tickets', 'newsletter', 'pay', 'uploads', 'chat', 'live', 'clients', 'team',
-    'about', 'feedback', 'welcome', 'register', 'contact', 'calendar', 'forum1', 'payment',
-    'support1', 'sso', 'api1', 'login', 'identity', 'inbox', 'forum2', 'conference', 'admin2',
-    'data1', 'gateway', 'preview', 'platform', 'management1', 'wiki1', 'admin3', 'service1',
-    'products', 'sales', 'company', 'careers', 'partners', 'events1', 'customer1', 'update',
-    'site', 'stats', 'billing', 'help', 'staff', 'dev1', 'email', 'security', 'service2', 'web',
-    'web1', 'mail2', 'ftp1', 'ns3', 'ns4', 'test1', 'admin4', 'webmail2', 'blog1', 'shop2',
-    'dev2', 'api2', 'm1', 'docs1', 'support2', 'customer2', 'forum3', 'news1', 'static1', 'cdn1',
-    'store1', 'secure1', 'backup1', 'app2', 'int1', 'data2', 'management2', 'beta1', 'portal1', 'my1',
-    'cloud1', 'server1', 'wiki2', 'mx1', 'vpn1', 'service3', 'status1', 'tools1', 'app3', 'media1',
-    'image1', 'files1', 'downloads1', 'local1', 'auth1', 'admin5', 'office1', 'sms1', 'info1',
-    'mail3', 'archive1', 'projects1', 'events2', 'survey1', 'forms1', 'shop3', 'search1', 'resources1',
-    'monitor1', 'tickets1', 'newsletter1', 'pay1', 'uploads1', 'chat1', 'live1', 'clients1', 'team1',
-    'about1', 'feedback1', 'welcome1', 'register1', 'contact1', 'calendar1', 'forum4', 'payment1',
-    'support2', 'sso1', 'api3', 'login1', 'identity1', 'inbox1', 'forum5', 'conference1', 'admin6',
-    'data3', 'gateway1', 'preview1', 'platform1', 'management3', 'wiki3', 'admin7', 'service4',
-    'products1', 'sales1', 'company1', 'careers1', 'partners1', 'events3', 'customer2', 'update1',
-    'site1', 'stats1', 'billing1', 'help1', 'staff1', 'dev2', 'email1', 'security1', 'service5', 'web2',
-    'web2', 'mail4', 'ftp2', 'ns5', 'ns6', 'test2', 'admin8', 'webmail3', 'blog2', 'shop4',
-    'dev3', 'api4', 'm2', 'docs2', 'support3', 'customer3', 'forum6', 'news2', 'static2', 'cdn2',
-    'store2', 'secure2', 'backup2', 'app4', 'int2', 'data4', 'management4', 'beta2', 'portal2', 'my2',
-    'cloud2', 'server2', 'wiki4', 'mx2', 'vpn2', 'service6', 'status2', 'tools2', 'app5', 'media2',
-    'image2', 'files2', 'downloads2', 'local2', 'auth2', 'admin9', 'office2', 'sms2', 'info2',
-    'mail5', 'archive2', 'projects2', 'events4', 'survey2', 'forms2', 'shop5', 'search2', 'resources2',
-    'monitor2', 'tickets2', 'newsletter2', 'pay2', 'uploads2', 'chat2', 'live2', 'clients2', 'team2',
-    'about2', 'feedback2', 'welcome2', 'register2', 'contact2', 'calendar2', 'forum7', 'payment2',
-    'support3', 'sso2', 'api5', 'login2', 'identity2', 'inbox2', 'forum8', 'conference2', 'admin10',
-    'data5', 'gateway2', 'preview2', 'platform2', 'management5', 'wiki5', 'admin11', 'service7',
-    'products2', 'sales2', 'company2', 'careers2', 'partners2', 'events5', 'customer3', 'update2',
-    'site2', 'stats2', 'billing2', 'help2', 'staff2', 'dev3', 'email2', 'security2', 'service8', 'web3',
-    'web3', 'mail6', 'ftp3', 'ns7', 'ns8', 'test3', 'admin12', 'webmail4', 'blog3', 'shop6',
-    'dev4', 'api6', 'm3', 'docs3', 'support4', 'customer4', 'forum9', 'news3', 'static3', 'cdn3',
-    'store3', 'secure3', 'backup3', 'app6', 'int3', 'data6', 'management6', 'beta3', 'portal3', 'my3',
-    'cloud3', 'server3', 'wiki6', 'mx3', 'vpn3', 'service9', 'status3', 'tools3', 'app7', 'media3',
-    'image3', 'files3', 'downloads3', 'local3', 'auth3', 'admin13', 'office3', 'sms3', 'info3',
-    'mail7', 'archive3', 'projects3', 'events6', 'survey3', 'forms3', 'shop7', 'search3', 'resources3',
-    'monitor3', 'tickets3', 'newsletter3', 'pay3', 'uploads3', 'chat3', 'live3', 'clients3', 'team3',
-    'about3', 'feedback3', 'welcome3', 'register3', 'contact3', 'calendar3', 'forum10', 'payment3',
-    'support4', 'sso3', 'api7', 'login3', 'identity3', 'inbox3', 'forum11', 'conference3', 'admin14',
-    'data7', 'gateway3', 'preview3', 'platform3', 'management7', 'wiki7', 'admin15', 'service10',
-    'products3', 'sales3', 'company3', 'careers3', 'partners3', 'events7', 'customer4', 'update3',
-    'site3', 'stats3', 'billing3', 'help3', 'staff3', 'dev4', 'email3', 'security3', 'service11', 'web4'
-]
+common_subdomains = ['www', 'mail', 'ftp', 'admin', 'blog', 'support', 'help', 'shop', 'secure', 'test', 
+    'dev', 'stage', 'cms', 'news', 'portal', 'app', 'api', 'files', 'images', 'store', 
+    'account', 'billing', 'docs', 'login', 'register', 'dashboard', 'panel', 'management', 
+    'data', 'resources', 'static', 'private', 'public', 'demo', 'webmail', 'media', 'content', 
+    'backup', 'devops', 'sandbox', 'stats', 'tools', 'status', 'forum', 'chat', 'user', 
+    'profile', 'signup', 'signin', 'my', 'pay', 'event', 'projects', 'services', 'system', 
+    'jobs', 'hr', 'sales', 'contact', 'info', 'marketing', 'newsletter', 'offers', 'updates', 
+    'partners', 'research', 'tutorials', 'learning', 'ecommerce', 'gateway', 'social', 'video', 
+    'audio', 'conference', 'review', 'testimonials', 'careers', 'inbox', 'calendar', 'settings', 
+    'archive', 'tickets', 'client', 'server', 'manage', 'checkout', 'payments', 'order', 
+    'helpdesk', 'authentication', 'alert', 'push', 'qa', 'preview', 'monitor', 'control', 
+    'custom', 'website', 'vps', 'b2b', 'b2c', 'health', 'records', 'learn', 'guide', 'assets', 
+    'maps', 'survey', 'training', 'university', 'cloud', 'invoice', 'platform', 'customer', 
+    'care', 'global', 'example', 'root', 'code', 'cache', 'discovery', 'worker', 'page', 
+    'new', 'alias', 'privacy', 'partner', 'recruitment', 'promotions', 'verification', 'report', 
+    'events', 'configuration', 'feedback', 'finance', 'education', 'subscriptions', 'link', 
+    'apply', 'manager', 'meeting', 'restore', 'repository', 'beta', 'manual', 'knowledge', 
+    'premium', 'access', 'search', 'purchase', 'products', 'payment', 'stream', 'cdn', 'wiki', 
+    'guest', 'network', 'production', 'github', 'public', 'secured', 'consulting', 'site', 
+    'exam', 'project', 'message', 'center', 'distribute', 'academy', 'system', 'workspace', 
+    'support', 'console', 'details', 'users', 'office', 'documents', 'requests', 'management', 
+    'backup', 'project', 'customer', 'details', 'site', 'reports', 'management', 'development', 
+    'config', 'report', 'application', 'admin', 'ecommerce', 'log', 'test', 'service', 'tool', 
+    'online', 'portal', 'app', 'service', 'website', 'partner', 'search', 'update', 'info', 
+    'review', 'beta', 'manage', 'store', 'secure', 'knowledge', 'session', 'query', 'integration', 
+    'manual', 'review', 'info', 'subscribe', 'dashboard', 'premium', 'track', 'feedback', 
+    'support', 'data', 'update', 'files', 'track', 'user', 'reports', 'platform', 'online', 
+    'consult', 'academy', 'services', 'tracking', 'server', 'portal', 'vps', 'checkout', 
+    'update', 'order', 'notify', 'resource', 'server', 'client', 'forum', 'static', 'support', 
+    'partner', 'log', 'training', 'files', 'checkout', 'guest', 'platform', 'enterprise', 
+    'analytics', 'service', 'data', 'subscription', 'api', 'products', 'search', 'application', 
+    'knowledge', 'docs', 'update', 'forum', 'access', 'services', 'projects', 'resource', 
+    'manage', 'api', 'notifications', 'tracking', 'review', 'customer', 'settings', 'static', 
+    'checkout', 'partner', 'workspace', 'service', 'track', 'site', 'public', 'log', 'knowledge', 
+    'notifications', 'user', 'apply', 'academy', 'feedback', 'partner', 'client', 'review', 
+    'resource', 'order', 'support', 'portal', 'site', 'details', 'feedback', 'public', 'customer', 
+    'projects', 'service', 'review', 'cloud', 'mail', 'forum', 'manage', 'portal', 'store', 
+    'platform', 'review', 'feedback', 'tracking', 'api', 'education', 'manage', 'data', 
+    'platform', 'support', 'details', 'partner', 'tools', 'forum', 'docs', 'resources', 
+    'store', 'subscription', 'consulting', 'product', 'archive', 'review', 'test', 'server', 
+    'notifications', 'tracking', 'portal', 'review', 'update', 'system', 'content', 'management', 
+    'user', 'support', 'details', 'tracking', 'review', 'data', 'tracking', 'cloud', 
+    'platform', 'feedback', 'update', 'service', 'forum', 'public', 'online', 'tracking', 
+    'academy', 'order', 'client', 'tracking', 'support', 'feedback', 'store', 'tools', 
+    'site', 'archive', 'management', 'tools', 'vps', 'platform', 'service', 'cloud', 'checkout', 
+    'public', 'user', 'track', 'update', 'data', 'tools', 'archive', 'support', 'tracking', 
+    'service', 'partner', 'site', 'consulting', 'feedback', 'review', 'resources', 'tracking', 
+    'service', 'forum', 'data', 'tracking', 'site', 'review', 'partner', 'tools', 'tracking', 
+    'public', 'client', 'tools', 'forum', 'manage', 'online', 'service', 'track', 'user', 
+    'feedback', 'update', 'tracking', 'academy', 'review', 'resource', 'knowledge', 'public', 
+    'service', 'archive', 'feedback', 'project', 'client', 'store', 'tracking', 'update', 
+    'platform', 'service', 'tools', 'knowledge', 'update', 'service', 'client', 'archive', 
+    'review', 'tools', 'data', 'client', 'service', 'public', 'update', 'tracking', 'feedback', 
+    'tracking', 'tracking', 'client', 'knowledge', 'service', 'partner', 'update', 'tracking', 
+    'consulting', 'review', 'forum', 'knowledge', 'public', 'tools', 'service', 'cloud', 
+    'public', 'feedback', 'tools', 'knowledge', 'feedback', 'store', 'client', 'tracking', 
+    'data', 'tracking', 'service', 'forum', 'client', 'feedback', 'data', 'public', 'client', 
+    'service', 'tracking', 'knowledge', 'consulting', 'tracking', 'feedback', 'public', 
+    'data', 'tracking', 'forum', 'client', 'archive', 'tracking', 'feedback', 'tracking', 
+    'store', 'review', 'client', 'tracking', 'tracking', 'feedback', 'client', 'service', 
+    'knowledge', 'service', 'forum', 'update', 'data', 'tracking', 'tracking', 'feedback', 
+    'archive', 'client', 'service', 'store', 'tracking', 'feedback', 'public', 'service', 
+    'feedback', 'tools', 'client', 'tracking', 'service', 'tracking', 'feedback', 'store', 
+    'archive', 'client', 'service', 'knowledge', 'public', 'feedback', 'tracking', 'update', 
+    'tracking', 'tools', 'store', 'feedback', 'tracking', 'knowledge', 'service', 'tracking', 
+    'public', 'feedback', 'client', 'service', 'update', 'tracking', 'forum', 'tools', 
+    'feedback', 'store', 'archive', 'knowledge', 'tracking', 'client', 'service', 'forum', 
+    'public', 'feedback', 'tracking', 'tools', 'client', 'service', 'knowledge', 'archive', 
+    'service', 'tracking', 'feedback', 'public', 'store', 'tracking', 'knowledge', 'client', 
+    'service', 'update', 'archive', 'feedback', 'tracking', 'public', 'tools', 'client', 
+    'service', 'forum', 'feedback', 'archive', 'tracking', 'knowledge', 'store', 'public', 
+    'update', 'client', 'service', 'feedback', 'tracking', 'forum', 'tools', 'archive', 
+    'public', 'tracking', 'store', 'feedback', 'knowledge', 'service', 'update', 'client', 
+    'forum', 'tracking', 'store', 'public', 'feedback',]
 
 def check_subdomain(domain, subdomain):
     try:
@@ -88,7 +112,7 @@ def enumerate_subdomains(domain):
 
 def print_credits():
     styled_print('\nFerramenta desenvolvida por SrJare337', Fore.RED, bold=True)
-    styled_print('Versão: V1.0', Fore.RED, bold=True)
+    styled_print('Versão: V1.1', Fore.RED, bold=True)
 
 def print_intro():
     border_length = 60
@@ -107,7 +131,7 @@ def print_intro():
 
 if __name__ == "__main__":
     print_intro()
-    domain = input(Fore.CYAN + "Digite o domínio para verificar (exemplo.com): " + Style.RESET_ALL).strip()
+    domain = input(Fore.CYAN + "Digite o domínio para (exemplo.com): " + Style.RESET_ALL).strip()
 
     enumerate_subdomains(domain)
     print_credits()
